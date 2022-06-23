@@ -2,7 +2,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 15%;
+  margin-top: 12%;
+  width: 100%;
+  height: 100%;
 }
 .project {
   font-style: normal;
@@ -15,6 +17,7 @@
   font-style: normal;
   font-weight: 50;
   font-size: 24px;
+
   line-height: 37px;
   color: #ffffff;
   margin-top: -6%;
@@ -23,9 +26,16 @@
 .plan a {
   font-weight: 600;
 }
+.idkwhat {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 
 .buttondiv {
-padding-top: 100px;
+  position: absolute;
+  padding-top: 100px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -34,6 +44,8 @@ padding-top: 100px;
   gap: 10px;
   background-color: #fff;
   border-radius: 20px;
+  bottom: 30px;
+  transition: transform 0.5s;
 }
 .button {
   color: #323232;
@@ -42,6 +54,7 @@ padding-top: 100px;
   flex: none;
   order: 0;
   flex-grow: 0;
+  user-select: none;
 }
 .arrow {
   height: 32px;
@@ -49,4 +62,7 @@ padding-top: 100px;
   flex: none;
   order: 1;
   flex-grow: 0;
+}
+.buttondiv:hover {
+  transform: scale(1.15);
 }
