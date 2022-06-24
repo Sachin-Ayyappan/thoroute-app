@@ -44,7 +44,7 @@
   gap: 10px;
   background-color: #fff;
   border-radius: 20px;
-  bottom: 50px;
+  bottom: 80px;
   transition: transform 0.5s;
 }
 .button {
@@ -55,6 +55,7 @@
   order: 0;
   flex-grow: 0;
   user-select: none;
+  font-weight: 500;
 }
 .arrow {
   height: 32px;
