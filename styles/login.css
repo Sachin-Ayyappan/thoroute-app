@@ -1,6 +1,10 @@
 
+body{
+  display: flex;
+  justify-content: center;
+}
 .login {
   width: 960px;
   background-color: red;
-  align-self: center;
+  height:100px;
 }
