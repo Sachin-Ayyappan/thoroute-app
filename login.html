@@ -13,24 +13,25 @@
       href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap"
       rel="stylesheet"
     />
+    <script src="./scripts/verify.js"></script>
     <title>Login</title>
 </head>
 <body>
   <div class="login-form">
-    <form>
+    <form defaultbutton="signin">
       <h1>Login</h1>
       <div class="content">
         <div class="input-field">
-          <input type="email" placeholder="Email" autocomplete="nope" required>
+          <input type="username" id="usnm" placeholder="Email" autocomplete="nope" required>
         </div>
         <div class="input-field">
-          <input type="password" placeholder="Password" autocomplete="new-password" required>
+          <input type="password" id="pswd" placeholder="Password" autocomplete="new-password" required>
         </div>
         <a href="#" class="link">Forgot Your Password?</a>
       </div>
       <div class="action">
         <button>Register</button>
-        <button>Sign in</button>
+        <button type="submit" onclick="verifyPassword()">Sign in</button>
       </div>
     </form>
   </div>
