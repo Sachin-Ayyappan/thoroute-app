@@ -9,4 +9,3 @@ function verifyPassword() {
         alert("Not so success vro!! :(");
     }
 }
-
