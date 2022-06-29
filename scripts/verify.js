@@ -9,6 +9,4 @@ function verifyPassword() {
         alert("Not so success vro!! :(");
     }
 }
-function redir(){
-    window.location.href("https://www.google.com")
-}
+
