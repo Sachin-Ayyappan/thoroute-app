@@ -48,7 +48,7 @@
   transition: transform 0.5s;
 }
 .button {
-  color: #323232;
+  color: #4B49AC;
   text-align: center;
   font-size: larger;
   flex: none;
@@ -74,4 +74,9 @@
   width: 100%;
   height: 100%;
   text-decoration: none;
+}
+.buttondiv div{
+  color: #4B49AC;
+  transform: scale(1.6);
+  padding-left: 10px;
 }
