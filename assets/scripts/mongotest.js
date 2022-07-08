@@ -14,9 +14,7 @@ MongoClient.connect(url, function (err, db) {
       if (err) throw err;
       pass = result[0].password;
       console.log(pass);
-      console.log(result[0]);
+      console.log(result);
       db.close();
-      return pass;
     });
-});
-console.log(pass);
+})
