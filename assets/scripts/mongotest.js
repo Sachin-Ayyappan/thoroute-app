@@ -1,6 +1,6 @@
 var MongoClient = require("mongodb").MongoClient;
 var url =
-  "mongodb+srv://thoroute-app:thoroute%402022adi@thoroute.vd7gshc.mongodb.net/?retryWrites=true&w=majority";
+  "mongoserverurl";
 us = "jadithyan";
 pass="teeemp";
 MongoClient.connect(url, function (err, db) {
