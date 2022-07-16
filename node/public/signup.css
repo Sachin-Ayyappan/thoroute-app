@@ -1,0 +1,105 @@
+body {
+  font-family: "Josefin Sans", "Gilroy", sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 480px;
+  gap: 16px;
+
+  background: #4b49ac;
+}
+.frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 28px;
+  gap: 50px;
+  width: 600px;
+  background: linear-gradient(135deg, #4745a3 0%, #4f4db5 100%);
+  box-shadow: -6px 6px 12px rgba(69, 67, 158, 0.2),
+    6px -6px 12px rgba(69, 67, 158, 0.2), -6px -6px 12px rgba(81, 79, 186, 0.9),
+    6px 6px 15px rgba(69, 67, 158, 0.9),
+    inset 1px 1px 2px rgba(81, 79, 186, 0.3),
+    inset -1px -1px 2px rgba(69, 67, 158, 0.5);
+  border-radius: 32px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  color: white;
+}
+.input-text {
+  width: 540px;
+  height: 50px;
+  box-sizing: border-box;
+    font-family: "Josefin Sans", "Gilroy", sans-serif;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.25);
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  padding-left: 20px;
+  transition: all 0.2s ease-in-out;
+}
+.input-text:focus {
+  outline: none;
+  font-family: "Josefin Sans", "Gilroy", sans-serif;
+  transform: scale(1.05);
+}
+.input-text:focus::-webkit-input-placeholder {
+  color: #ffffff;
+  opacity: 1;
+}
+.input-text::-webkit-input-placeholder {
+  font-family: "Josefin Sans", "Gilroy", sans-serif;
+  font-size: 15px;
+}
+.sign_up {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 28px;
+  gap: 16px;
+}
+.input-text-half {
+  width: 262px;
+}
+.displayinline {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+.input-button {
+  width: 540px;
+  height: 50px;
+  box-sizing: border-box;
+  background: #4b49ac;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.25);
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  padding-left: 20px;
+  font-family: "Josefin Sans", "Gilroy", sans-serif;
+  font-size: 15px;
+  color: white;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+.input-button:hover {
+  background: #434294;
+  transform: scale(1.05);
+}
+.input-button:active {
+  transform: scale(0.95);
+}

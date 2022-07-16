@@ -21,13 +21,17 @@ app.use(
 );
 
 app.post("/sign_up", function (req, res) {
-  var name = req.body.name;
+  var fname = req.body.firstname;
+  var lname = req.body.lastname;
+  var uname = req.body.username;
   var email = req.body.email;
   var pass = req.body.password;
-  var phone = req.body.phone;
+  var phone = req.body.number;
 
   var data = {
-    name: name,
+    firstname: fname,
+    lastname: lname,
+    username: uname,
     email: email,
     password: pass,
     phone: phone,
