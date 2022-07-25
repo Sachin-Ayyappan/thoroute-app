@@ -40,7 +40,7 @@ app.post("/sign_up", function (req, res) {
     if (err) throw err;
     console.log("Record inserted Successfully");
   });
-  return res.redirect("http://127.0.0.1:5500/assets/dashboard/index.html");
+  return res.redirect("http://192.168.229.229:5500/assets/dashboard/index.html");
 });
 
 app
