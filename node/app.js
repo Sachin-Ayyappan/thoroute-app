@@ -36,11 +36,11 @@ app.post("/sign_up", function (req, res) {
     password: pass,
     phone: phone,
   };
-  db.collection("test").insertOne(data, function (err, collection) {
+  db.collection("users").insertOne(data, function (err, collection) {
     if (err) throw err;
     console.log("Record inserted Successfully");
   });
-  return res.redirect("redir.html");
+  return res.redirect("http://127.0.0.1:5500/assets/dashboard/index.html");
 });
 
 app
