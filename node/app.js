@@ -40,7 +40,7 @@ app.post("/sign_up", function (req, res) {
     if (err) throw err;
     console.log("Record inserted Successfully");
   });
-  return res.redirect("http://192.168.229.229:5500/assets/dashboard/index.html");
+  return res.redirect("http://localhost:5500/assets/dashboard/index.html");
 });
 
 app
@@ -52,4 +52,4 @@ app
   })
   .listen(3001);
 
-console.log("server listening at port 3000");
+console.log("User registration server listening at port 3001");
