@@ -20,6 +20,8 @@
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="./images/logowhite.svg" />
+
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
 </head>
 <body>
   <div class="container-scroller">
@@ -301,21 +303,49 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          <!--
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" data-toggle="collapse" href="#ui-buses" aria-expanded="false" aria-controls="ui-basic">
               <i class="icon-layout menu-icon"></i>
-              <span class="menu-title">UI Elements</span>
+              <span class="menu-title">Buses</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse" id="ui-buses">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../404.html">Add</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../404.html">Remove</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../404.html">View</a></li>
               </ul>
             </div>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-routes" aria-expanded="false" aria-controls="ui-basic">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Routes</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-routes">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="../../404.html">Add</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../404.html">Remove</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../404.html">View</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-actions" aria-expanded="false" aria-controls="ui-basic">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Misc</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-actions">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="../../404.html">Clear Routes</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../404.html">Clear Buses</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../404.html">Optimize</a></li>
+              </ul>
+            </div>
+          </li>
+          <!--
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
               <i class="icon-columns menu-icon"></i>
@@ -1055,6 +1085,43 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+  <py-script>
+    import pymongo
+    from pyparsing import condition_as_parse_action
+    import os
+    import json
+    
+    client = pymongo.MongoClient(
+        "mongodb+srv://thoroute-app:thoroute%402022adi@thoroute.vd7gshc.mongodb.net/?retryWrites=true&w=majority")
+    
+    db = client.users
+    buses = client.users.buses
+    busdata=list(buses.find({},{'_id':0,'qualityrating':0,'number':0}))
+    tempholder={
+              "id": "TEMP01",
+              "provider": "SELF",
+              "mileage": "NaN",
+              "condition": "Undefined",
+              "distancedriven": "NaN",
+              "age": "NaN",
+              "capacity": "NaN"}
+    
+    #json_object = json.dumps(dictionary, indent=4)
+    
+    with open('./assets/dashboard/js/data.txt','w') as businfo:
+        businfo.write('{"data":[')
+        for i in busdata:
+            businfo.write(json.dumps(i,indent=10)+',')
+    
+        businfo.write(str(json.dumps(tempholder,indent=10))+']}')
+    
+    print("Data fetched and written successfully")
+    
+    """
+    for files in os.listdir("./assets/dashboard/js/data.txt"):
+      print(files)
+    """
+      </py-script>
   <!-- container-scroller -->
 
   <!-- plugins:js -->
