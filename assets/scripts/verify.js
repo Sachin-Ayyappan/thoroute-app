@@ -3,8 +3,7 @@ var attempt = 3; // Variable to count number of attempts.
 function verifyPassword() {
   var username = document.getElementById("exampleInputUsername").value;
   var password = document.getElementById("exampleInputPassword").value;
-  if (username == "thoroute" && password == "admin123") {
-    alert("Login successfully");
+  if (username == "thoroute" && password == "admin123") {s
     window.location = "../../index.html"; // Redirecting to other page.
     return false;
   } else {
