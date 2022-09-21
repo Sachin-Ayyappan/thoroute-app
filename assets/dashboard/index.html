@@ -22,6 +22,12 @@
   <link rel="shortcut icon" href="./images/logowhite.svg" />
 
   <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+  <py-env>
+    - pymongo
+    - pyparsing
+    - os
+    - json
+  </py-env>
 </head>
 <body>
   <div class="container-scroller">
@@ -311,9 +317,9 @@
             </a>
             <div class="collapse" id="ui-buses">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../404.html">Add</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../404.html">Remove</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../404.html">View</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../backend/dist/Thoroute-Backend.exe" download>Add</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../backend/dist/Thoroute-Backend.exe" download>Remove</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../backend/dist/Thoroute-Backend.exe" download>View</a></li>
               </ul>
             </div>
           </li>
@@ -325,9 +331,9 @@
             </a>
             <div class="collapse" id="ui-routes">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../404.html">Add</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../404.html">Remove</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../404.html">View</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../backend/dist/Thoroute-Backend.exe" download>Add</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../backend/dist/Thoroute-Backend.exe" download>Remove</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../backend/dist/Thoroute-Backend.exe" download>View</a></li>
               </ul>
             </div>
           </li>
@@ -339,9 +345,9 @@
             </a>
             <div class="collapse" id="ui-actions">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../404.html">Clear Routes</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../404.html">Clear Buses</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../404.html">Optimize</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../backend/dist/Thoroute-Backend.exe" download>Clear Routes</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../backend/dist/Thoroute-Backend.exe" download>Clear Buses</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../backend/dist/Thoroute-Backend.exe" download>Optimize</a></li>
               </ul>
             </div>
           </li>
@@ -1045,7 +1051,7 @@
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Advanced Table</p>
+                  <p class="card-title">Available Buses</p>
                   <div class="row">
                     <div class="col-12">
                       <div class="table-responsive">
@@ -1108,6 +1114,38 @@
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+  <py-script>
+    import pymongo
+    from pyparsing import condition_as_parse_action
+    import os
+    import json
+
+    client = pymongo.MongoClient(
+        "mongodb+srv://thoroute-app:thoroute%402022adi@thoroute.vd7gshc.mongodb.net/?retryWrites=true&w=majority")
+
+    db = client.users
+    buses = client.users.buses
+    busdata=list(buses.find({},{'_id':0,'qualityrating':0,'number':0}))
+    tempholder={
+          "id": "TEMP01",
+          "provider": "SELF",
+          "mileage": "NaN",
+          "condition": "Undefined",
+          "distancedriven": "NaN",
+          "age": "NaN",
+          "capacity": "NaN"}
+    print("Hello World")
+    #json_object = json.dumps(dictionary, indent=4)
+
+    with open('./assets/dashboard/js/data.txt','w') as businfo:
+        businfo.write('{"data":[')
+        for i in busdata:
+            businfo.write(json.dumps(i,indent=10)+',')
+
+        businfo.write(str(json.dumps(tempholder,indent=10))+']}')
+
+    print("Data fetched and written successfully")
+  </py-script>
 </body>
 
 </html>

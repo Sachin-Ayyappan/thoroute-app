@@ -24,8 +24,10 @@ with open('./assets/dashboard/js/data.txt','w') as businfo:
     businfo.write('{"data":[')
     for i in busdata:
         businfo.write(json.dumps(i,indent=10)+',')
+    businfo.seek(businfo.tell() - 1, os.SEEK_SET)
+    businfo.write(']}')
 
-    businfo.write(str(json.dumps(tempholder,indent=10))+']}')
+    
 
 print("Data fetched and written successfully")
 

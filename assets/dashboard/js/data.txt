@@ -46,20 +46,4 @@
           "distancedriven": 34000,
           "age": 4,
           "capacity": 75
-},{
-          "id": "THB007",
-          "provider": "KSRTC",
-          "mileage": 6,
-          "condition": "good",
-          "distancedriven": 67000,
-          "age": 5,
-          "capacity": 80
-},{
-          "id": "TEMP01",
-          "provider": "SELF",
-          "mileage": "NaN",
-          "condition": "Undefined",
-          "distancedriven": "NaN",
-          "age": "NaN",
-          "capacity": "NaN"
 }]}
