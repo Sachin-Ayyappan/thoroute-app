@@ -16,6 +16,10 @@ routes = client.users.routes
 optimal = client.users.optimal
 print("Succesfully connected to MongoDB")
 
+def cclear():
+    os.system('cls')
+    
+
 
 class bus:
     def show_bus(self):
@@ -138,6 +142,7 @@ menu1_options = {
     "5":      "Delete Bus",
     "6":      "Delete Route",
     "7":      "Optimize Buses for Routes",
+    "8":      "Clear the Console",
     "0":      "Quit (or use CTRL+C)",
 }
 
@@ -210,6 +215,8 @@ class menu_template():
             brr.delete_route()
         elif ch == '7':
             brr.optimize()
+        elif ch == '8':
+            cclear()
         elif (ch == ''):
             pass  # Print menu again
         elif ch == '0':
