@@ -36,10 +36,10 @@ class bus:
         id = input("Enter bus id: ")
         provider = input("Enter provider: ")
         bnumber = input("Enter bus number: ")
-        mileage = int(input("Enter mileage (in Km/L): "))
+        mileage = float(input("Enter mileage (in Km/L): "))
         condition = input("Enter condition (poor/good/excellent): ")
-        driven = int(input("Enter distance driven (in Km): "))
-        age = int(input("Enter age of bus: "))
+        driven = float(input("Enter distance driven (in Km): "))
+        age = float(input("Enter age of bus: "))
         capacity = int(input("Enter max seating capacity: "))
         qualityrating = (mileage*capacity)/(age*(driven/10000))
         buses.insert_one({'id': id,
@@ -55,7 +55,7 @@ class bus:
     def insert_route(self):
         id = input("Enter route id: ")
         name = input("Enter route name: ")
-        length = int(input("Enter length of route (in Km): "))
+        length = float(input("Enter length of route (in Km): "))
         stops = int(input("Enter number of stops: "))
         avgpeople = int(input("Enter average people per travel: "))
         rtquakity = (avgpeople/((length/100)*stops))
