@@ -20,6 +20,14 @@
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="./images/logowhite.svg" />
+
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+  <py-env>
+    - pymongo
+    - pyparsing
+    - os
+    - json
+  </py-env>
 </head>
 <body>
   <div class="container-scroller">
@@ -301,21 +309,49 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          <!--
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" data-toggle="collapse" href="#ui-buses" aria-expanded="false" aria-controls="ui-basic">
               <i class="icon-layout menu-icon"></i>
-              <span class="menu-title">UI Elements</span>
+              <span class="menu-title">Buses</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse" id="ui-buses">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../backend/dist/Thoroute-Backend.exe" download>Add</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../backend/dist/Thoroute-Backend.exe" download>Remove</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../backend/dist/Thoroute-Backend.exe" download>View</a></li>
               </ul>
             </div>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-routes" aria-expanded="false" aria-controls="ui-basic">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Routes</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-routes">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="../../backend/dist/Thoroute-Backend.exe" download>Add</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../backend/dist/Thoroute-Backend.exe" download>Remove</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../backend/dist/Thoroute-Backend.exe" download>View</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-actions" aria-expanded="false" aria-controls="ui-basic">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Misc</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-actions">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="../../backend/dist/Thoroute-Backend.exe" download>Clear Routes</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../backend/dist/Thoroute-Backend.exe" download>Clear Buses</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../backend/dist/Thoroute-Backend.exe" download>Optimize</a></li>
+              </ul>
+            </div>
+          </li>
+          <!--
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
               <i class="icon-columns menu-icon"></i>
@@ -1015,20 +1051,20 @@
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Advanced Table</p>
+                  <p class="card-title">Available Buses</p>
                   <div class="row">
                     <div class="col-12">
                       <div class="table-responsive">
                         <table id="example" class="display expandable-table" style="width:100%">
                           <thead>
                             <tr>
-                              <th>Quote#</th>
-                              <th>Product</th>
-                              <th>Business type</th>
-                              <th>Policy holder</th>
-                              <th>Premium</th>
-                              <th>Status</th>
-                              <th>Updated at</th>
+                              <th>ID</th>
+                              <th>Business</th>
+                              <th>Mileage(Km/L)</th>
+                              <th>Condition</th>
+                              <th>Distance Driven(Km)</th>
+                              <th>Age</th>
+                              <th>Capacity</th>
                               <th></th>
                             </tr>
                           </thead>
@@ -1078,6 +1114,38 @@
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+  <py-script>
+    import pymongo
+    from pyparsing import condition_as_parse_action
+    import os
+    import json
+
+    client = pymongo.MongoClient(
+        "mongodb+srv://thoroute-app:thoroute%402022adi@thoroute.vd7gshc.mongodb.net/?retryWrites=true&w=majority")
+
+    db = client.users
+    buses = client.users.buses
+    busdata=list(buses.find({},{'_id':0,'qualityrating':0,'number':0}))
+    tempholder={
+          "id": "TEMP01",
+          "provider": "SELF",
+          "mileage": "NaN",
+          "condition": "Undefined",
+          "distancedriven": "NaN",
+          "age": "NaN",
+          "capacity": "NaN"}
+    print("Hello World")
+    #json_object = json.dumps(dictionary, indent=4)
+
+    with open('./assets/dashboard/js/data.txt','w') as businfo:
+        businfo.write('{"data":[')
+        for i in busdata:
+            businfo.write(json.dumps(i,indent=10)+',')
+
+        businfo.write(str(json.dumps(tempholder,indent=10))+']}')
+
+    print("Data fetched and written successfully")
+  </py-script>
 </body>
 
 </html>

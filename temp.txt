@@ -1,0 +1,49 @@
+{"data":[{
+          "id": "THB001",
+          "provider": "KSRTC",
+          "mileage": 6,
+          "condition": "good",
+          "distancedriven": 45000,
+          "age": 5,
+          "capacity": 50
+},{
+          "id": "THB002",
+          "provider": "KSRTC",
+          "mileage": 3,
+          "condition": "poor",
+          "distancedriven": 75000,
+          "age": 8,
+          "capacity": 70
+},{
+          "id": "THB003",
+          "provider": "KSRTC",
+          "mileage": 7,
+          "condition": "good",
+          "distancedriven": 32000,
+          "age": 6,
+          "capacity": 80
+},{
+          "id": "THB004",
+          "provider": "KSRTC",
+          "mileage": 8,
+          "condition": "excellent",
+          "distancedriven": 12000,
+          "age": 2,
+          "capacity": 80
+},{
+          "id": "THB005",
+          "provider": "KSRTC",
+          "mileage": 6,
+          "condition": "good",
+          "distancedriven": 43000,
+          "age": 5,
+          "capacity": 60
+},{
+          "id": "TEMP01",
+          "provider": "SELF",
+          "mileage": "NaN",
+          "condition": "Undefined",
+          "distancedriven": "NaN",
+          "age": "NaN",
+          "capacity": "NaN"
+}]}

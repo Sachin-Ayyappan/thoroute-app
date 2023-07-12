@@ -632,13 +632,13 @@
   var table = $('#example').DataTable( {
     "ajax": "js/data.txt",
     "columns": [
-        { "data": "Quote" },
-        { "data": "Product" },
-        { "data": "Business" },
-        { "data": "Policy" }, 
-        { "data": "Premium" }, 
-        { "data": "Status" }, 
-        { "data": "Updated" }, 
+        { "data": "id" },
+        { "data": "provider" },
+        { "data": "mileage" },
+        { "data": "condition" }, 
+        { "data": "distancedriven" }, 
+        { "data": "age" }, 
+        { "data": "capacity" }, 
         {
           "className":      'details-control',
           "orderable":      false,
